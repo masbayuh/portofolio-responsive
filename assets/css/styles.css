@@ -1,4 +1,4 @@
-/*===== GOOGLE FONTS =====*/
+/* ===== GOOGLE FONTS ===== */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 /*===== VARIABLES CSS =====*/
@@ -31,14 +31,14 @@
     --z-fixed: 100;
 }
 
-@media screen and (min-width: 968px) {
+/* @media screen and (min-width: 968px) {
     :root{
         --big-font-size: 3.5rem;
         --h2-font-size: 2rem;
         --normal-font-size: 1rem;
         --smaller-font-size: .875rem;
     }
-}
+} */
 
 /*===== BASE =====*/
 *, ::before, ::after{
@@ -64,6 +64,13 @@ ul{
     margin: 0;
     padding: 0;
     list-style: none;
+    list-style-type: none;
+    display: inline;
+}
+
+li{
+    text-decoration: none;
+    display: inline;
 }
 
 a {
@@ -80,6 +87,13 @@ img {
 /*===== CLASS CSS =====*/
 
 /*===== LAYOUT =====*/
+.bd-grid{
+    max-width: 1024px;
+    display: grid;
+    margin-left: var(--mb-2);
+    margin-right: var(--mb-2);
+}
+
 .l-header{
     width: 100%;
     position: fixed;
@@ -90,11 +104,92 @@ img {
     box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
 }
 
+
+
 /*===== NAV =====*/
+.nav__logo{
+    columns: var(--second-color);
+}
+
 .nav{
     height: var(--header-height);
     display: flex;
     justify-content: space-between;
     align-items: center;
     font-weight: var(--font-semi);
+    position: relative;
 }
+
+@media screen and (max-width: 767px) {
+    .nav__menu{
+        position: space;
+        top: var(--header-height);
+        right: -100%;
+        width: 80%;
+        height: 100%;
+        padding: 2rem;
+        background-color: var(--second-color);
+        transition: 0.5s;
+    }
+}
+
+.nav__item{
+    margin-bottom: var(--mb-4);
+}
+
+.nav__link{
+    position: relative;
+    color: #fff;
+}
+
+.nav__link:hover::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0.18rem;
+    left: 0;
+    top:2rem;
+    background-color: var(--first-color);
+}
+
+.nav__link:hover{
+    position: relative;
+}
+
+.nav__toggle{
+    color: var(--second-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Active menu */
+.active-link::after{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 0.18rem;
+    left: 0;
+    top: 2rem;
+    background-color: var(--first-color);
+}
+
+/*===== MEDIA QUERIES =====*/
+@media screen and (min-width: 768px) {
+    .nav{
+        height: calc(var(--header-height) + 1.5rem);
+    }
+    .nav__list{
+        display: flex;
+        padding-top: 0;
+    }
+    .nav__link{
+        color: var(--second-color) ;
+    }
+    .nav__item{
+        margin-left: var(--mb-6);
+        margin-bottom: 0;
+    }
+    .nav__toggle{
+        display: none;
+    }
+} 
